@@ -34,17 +34,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of itemList">
-        <th scope="row">{{item.id}}</th>
-        <td>{{item.title}}</td>
-        <td>{{item.description}}</td>
-        <td>{{item.createdBy.name}}</td>
-        <td>{{item.createdIn}}</td>
-        <td>{{item.updatedBy.name}}</td>
-        <td>{{item.updatedIn}}</td>
+      <tr *ngFor="let link of linkList">
+        <th scope="row">{{link.id}}</th>
+        <td>{{link.title}}</td>
+        <td>{{link.description}}</td>
+        <td>{{link.createdBy.name}}</td>
+        <td>{{link.createdIn}}</td>
+        <td>{{link.updatedBy.name}}</td>
+        <td>{{link.updatedIn}}</td>
         <td>
-          <button type="button" class="btn btn-info" (click)="update(item.id)">E</button>
-          <button type="button" class="btn btn-danger" (click)="delete(item.id)">X</button>
+          <button type="button" class="btn btn-info" (click)="update(link.id)">E</button>
+          <button type="button" class="btn btn-danger" (click)="delete(link.id)">X</button>
         </td>
       </tr>
     </tbody>

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Item } from 'src/app/models/item';
+import { Link } from 'src/app/models/link';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/service/auth.service';
-import { ItemService } from 'src/app/service/item.service';
+import { LinkService } from 'src/app/service/link.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -12,8 +12,8 @@ import { UserService } from 'src/app/service/user.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  private item: Item = {} as Item;
-  public itemList: Item[] = [];
+  private link: Link = {} as Link;
+  public linkList: Link[] = [];
   public user: User = {} as User;
   form: FormGroup = this.formBuilder.group({
     id: this.formBuilder.control(null, null),
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   });
   visibleForm: boolean = false;
   constructor(
-    private itemService: ItemService,
+    private linkService: LinkService,
     private userService: UserService,
     private authService: AuthService,
     private formBuilder: FormBuilder,
@@ -52,40 +52,40 @@ export class HomeComponent implements OnInit {
   }
 
   list(id: number) {
-    this.itemService.list(id).subscribe((data) => {
-      this.itemList = data;
+    this.linkService.list(id).subscribe((data) => {
+      this.linkList = data;
     });
   }
 
   saveOrUpdate(): void {
     if (this.form.get('id')?.value == null) {
-      const itemForm = {
+      const linkForm = {
         idUser: this.user.id,
         title: this.form.get('title')?.value,
         description: this.form.get('description')?.value,
       };
-      this.itemService.save(itemForm).subscribe(() => this.list(this.user.id));
+      this.linkService.save(linkForm).subscribe(() => this.list(this.user.id));
     } else {
-      this.item.id = this.form.get('id')?.value;
-      this.item.title = this.form.get('title')?.value;
-      this.item.description = this.form.get('description')?.value;
+      this.link.id = this.form.get('id')?.value;
+      this.link.title = this.form.get('title')?.value;
+      this.link.description = this.form.get('description')?.value;
 
-      this.itemService
-        .update(this.item)
+      this.linkService
+        .update(this.link)
         .subscribe(() => this.list(this.user.id));
     }
   }
 
   findById(id: number) {
-    this.itemService.findById(id).subscribe((item: Item) => {
-      this.form.controls['id'].setValue(item.id);
-      this.form.controls['title'].setValue(item.title);
-      this.form.controls['description'].setValue(item.description);
+    this.linkService.findById(id).subscribe((link: Link) => {
+      this.form.controls['id'].setValue(link.id);
+      this.form.controls['title'].setValue(link.title);
+      this.form.controls['description'].setValue(link.description);
     });
   }
 
   delete(id: number) {
-    this.itemService.delete(id).subscribe(() => this.list(this.user.id));
+    this.linkService.delete(id).subscribe(() => this.list(this.user.id));
   }
 
   logout() {

@@ -41,27 +41,27 @@ export class AppConstants {
   }
 
   /**
-   * Item
+   * Link
    */
-  public static get baseItem(): string {
-    return this.baseServe + '/item';
+  public static get baseLink(): string {
+    return this.baseServe + '/link';
   }
-  public static get baseItemSave(): string {
-    return this.baseItem + '/save';
+  public static get baseLinkSave(): string {
+    return this.baseLink + '/save';
   }
-  public static get baseItemUpdate(): string {
-    return this.baseItem + '/update';
+  public static get baseLinkUpdate(): string {
+    return this.baseLink + '/update';
   }
-  public static baseItemDelete(id: number): string {
-    return this.baseItem + '/' + id;
+  public static baseLinkDelete(id: number): string {
+    return this.baseLink + '/' + id;
   }
-  public static baseItemFindById(id: number): string {
-    return this.baseItem + '/' + id;
+  public static baseLinkFindById(id: number): string {
+    return this.baseLink + '/' + id;
   }
-  public static baseItemFindAllById(id: number): string {
-    return this.baseItem + '/all/' + id;
+  public static baseLinkFindAllById(id: number): string {
+    return this.baseLink + '/all/' + id;
   }
-  public static baseItemPageSort(
+  public static baseLinkPageSort(
     page: number,
     size: number,
     order: string
@@ -71,7 +71,7 @@ export class AppConstants {
     // const order: string = "desc";
 
     return (
-      this.baseItem +
+      this.baseLink +
       `?page=${page}&size=${size}&sort=id,${order}&sort=title,asc`
     );
   }

@@ -2,8 +2,8 @@ import { Pageable } from './pageable';
 import { Sort } from './sort';
 import { User } from './user';
 
-export interface ItemPageable {
-  content: Item[];
+export interface LinkPageable {
+  content: Link[];
   pageable: Pageable;
   totalPages: number;
   totalElements: number;
@@ -16,7 +16,7 @@ export interface ItemPageable {
   empty: boolean;
 }
 
-export interface Item {
+export interface Link {
   id: number;
   title: string;
   description: string;
