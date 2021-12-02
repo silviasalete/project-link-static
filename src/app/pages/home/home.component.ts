@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Item } from 'src/app/models/item';
 import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/service/auth.service';
 import { ItemService } from 'src/app/service/item.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private itemService: ItemService,
     private userService: UserService,
+    private authService: AuthService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -84,5 +86,9 @@ export class HomeComponent implements OnInit {
 
   delete(id: number) {
     this.itemService.delete(id).subscribe(() => this.list(this.user.id));
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

@@ -3,6 +3,7 @@
   <h2>Welcome {{user.name}}</h2>
 </div>
   <button type="button" (click)="new()" class="btn btn-primary" >Novo</button>
+  <button type="button" (click)="logout()" class="btn btn-primary" >Logout</button>
 
 <div *ngIf="visibleForm" class="card-body">
   <form [formGroup]="form" (ngSubmit)="saveOrUpdate()">

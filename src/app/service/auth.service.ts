@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 
@@ -5,7 +6,7 @@ import jwtDecode from 'jwt-decode';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(private router: Router) {}
 
   getAuthorizaionToken() {
     const token = window.localStorage.getItem('token');
@@ -47,5 +48,10 @@ export class AuthService {
       return false;
     }
     return true;
+  }
+
+  logout() {
+    window.localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }
