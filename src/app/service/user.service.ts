@@ -26,4 +26,8 @@ export class UserService {
       <Object>AppConstants.httpOptions
     );
   }
+
+  findUserById(id: number): Observable<User> {
+    return this.httpClient.get<User>(AppConstants.baseUserFindById(id));
+  }
 }

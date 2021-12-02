@@ -6,9 +6,10 @@ import { LoginComponent } from 'src/app/pages/login/login.component';
 import { RouterModule } from '@angular/router';
 import { AuthLayoutRoutes } from './auth-layout.routing';
 import { HttpClientModule } from '@angular/common/http';
+import { WelcomeComponent } from 'src/app/pages/welcome/welcome.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [WelcomeComponent, LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(AuthLayoutRoutes),

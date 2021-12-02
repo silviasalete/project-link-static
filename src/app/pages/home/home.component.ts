@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Item } from 'src/app/models/item';
+import { User } from 'src/app/models/user';
 import { ItemService } from 'src/app/service/item.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-home',
@@ -10,16 +13,31 @@ import { ItemService } from 'src/app/service/item.service';
 export class HomeComponent implements OnInit {
   private item: Item = {} as Item;
   public itemList: Item[] = [];
+  public user: User = {} as User;
   form: FormGroup = this.formBuilder.group({
     id: this.formBuilder.control(null, null),
     title: this.formBuilder.control(null, Validators.required),
     description: this.formBuilder.control(null, Validators.required),
   });
   visibleForm: boolean = false;
-  constructor(private service: ItemService, private formBuilder: FormBuilder) {}
+  constructor(
+    private itemService: ItemService,
+    private userService: UserService,
+    private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.list();
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.findUserById(+params['id']);
+      this.list(+params['id']);
+    });
+  }
+
+  findUserById(id: number) {
+    this.userService.findUserById(id).subscribe((data) => {
+      this.user = data;
+    });
   }
 
   new() {
@@ -31,32 +49,33 @@ export class HomeComponent implements OnInit {
     this.visibleForm = true;
   }
 
-  list() {
-    this.service.list().subscribe((data) => {
-      this.itemList = data.content;
+  list(id: number) {
+    this.itemService.list(id).subscribe((data) => {
+      this.itemList = data;
     });
   }
 
   saveOrUpdate(): void {
     if (this.form.get('id')?.value == null) {
-      console.log('save');
-
-      this.item.title = this.form.get('title')?.value;
-      this.item.description = this.form.get('description')?.value;
-
-      this.service.save(this.item).subscribe(() => this.list());
+      const itemForm = {
+        idUser: this.user.id,
+        title: this.form.get('title')?.value,
+        description: this.form.get('description')?.value,
+      };
+      this.itemService.save(itemForm).subscribe(() => this.list(this.user.id));
     } else {
-      console.log('update');
       this.item.id = this.form.get('id')?.value;
       this.item.title = this.form.get('title')?.value;
       this.item.description = this.form.get('description')?.value;
 
-      this.service.update(this.item).subscribe(() => this.list());
+      this.itemService
+        .update(this.item)
+        .subscribe(() => this.list(this.user.id));
     }
   }
 
   findById(id: number) {
-    this.service.findById(id).subscribe((item: Item) => {
+    this.itemService.findById(id).subscribe((item: Item) => {
       this.form.controls['id'].setValue(item.id);
       this.form.controls['title'].setValue(item.title);
       this.form.controls['description'].setValue(item.description);
@@ -64,6 +83,6 @@ export class HomeComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.service.delete(id).subscribe(() => this.list());
+    this.itemService.delete(id).subscribe(() => this.list(this.user.id));
   }
 }

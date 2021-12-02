@@ -10,12 +10,13 @@ import { Item, ItemPageable } from '../models/item';
 export class ItemService {
   constructor(private http: HttpClient) {}
 
-  list(): Observable<ItemPageable> {
-    return this.http.get<ItemPageable>(
-      AppConstants.baseItemPageSort(0, 10, 'desc')
+  list(id: number): Observable<Item[]> {
+    return this.http.get<Item[]>(
+      AppConstants.baseItemFindAllById(id),
+      <Object>AppConstants.httpOptions
     );
   }
-  save(request: Item): Observable<Item> {
+  save(request: any): Observable<Item> {
     return this.http.post<Item>(
       AppConstants.baseItemSave,
       request,

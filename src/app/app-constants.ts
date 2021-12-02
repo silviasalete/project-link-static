@@ -36,6 +36,9 @@ export class AppConstants {
   public static get baseUserSave(): string {
     return this.baseUser + '/save';
   }
+  public static baseUserFindById(id: number): string {
+    return this.baseUser + '/' + id;
+  }
 
   /**
    * Item
@@ -54,6 +57,9 @@ export class AppConstants {
   }
   public static baseItemFindById(id: number): string {
     return this.baseItem + '/' + id;
+  }
+  public static baseItemFindAllById(id: number): string {
+    return this.baseItem + '/all/' + id;
   }
   public static baseItemPageSort(
     page: number,

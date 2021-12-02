@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/service/user.service';
 
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -31,10 +33,9 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       this.userService.createAccount(this.form.value).subscribe((response) => {
-        console.log('Usuário salvo: ', response);
+        this.form.reset();
+        this.router.navigate(['/login', response.email]);
       });
-
-      this.form.reset();
     }
   }
 }
