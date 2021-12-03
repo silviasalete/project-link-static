@@ -19,7 +19,7 @@ export interface LinkPageable {
 export interface Link {
   id: number;
   title: string;
-  description: string;
+  url: string;
   createdBy: User;
   createdIn: Date;
   updatedBy: User;

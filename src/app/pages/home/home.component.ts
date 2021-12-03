@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   form: FormGroup = this.formBuilder.group({
     id: this.formBuilder.control(null, null),
     title: this.formBuilder.control(null, Validators.required),
-    description: this.formBuilder.control(null, Validators.required),
+    url: this.formBuilder.control(null, Validators.required),
   });
   visibleForm: boolean = false;
   constructor(
@@ -62,17 +62,21 @@ export class HomeComponent implements OnInit {
       const linkForm = {
         idUser: this.user.id,
         title: this.form.get('title')?.value,
-        description: this.form.get('description')?.value,
+        url: this.form.get('url')?.value,
       };
-      this.linkService.save(linkForm).subscribe(() => this.list(this.user.id));
+      this.linkService.save(linkForm).subscribe(() => {
+        this.form.reset();
+        this.list(this.user.id);
+      });
     } else {
       this.link.id = this.form.get('id')?.value;
       this.link.title = this.form.get('title')?.value;
-      this.link.description = this.form.get('description')?.value;
+      this.link.url = this.form.get('url')?.value;
 
-      this.linkService
-        .update(this.link)
-        .subscribe(() => this.list(this.user.id));
+      this.linkService.update(this.link).subscribe(() => {
+        this.form.reset();
+        this.list(this.user.id);
+      });
     }
   }
 
@@ -80,7 +84,7 @@ export class HomeComponent implements OnInit {
     this.linkService.findById(id).subscribe((link: Link) => {
       this.form.controls['id'].setValue(link.id);
       this.form.controls['title'].setValue(link.title);
-      this.form.controls['description'].setValue(link.description);
+      this.form.controls['url'].setValue(link.url);
     });
   }
 

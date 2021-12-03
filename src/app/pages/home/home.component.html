@@ -12,8 +12,8 @@
       <input type="text" formControlName="title"  class="form-control" id="title" placeholder="title">
     </div>
     <div class="form-group">
-      <label for="description">Description</label>
-      <input type="text" formControlName="description"  class="form-control" id="description" placeholder="description">
+      <label for="url">Url</label>
+      <input type="text" formControlName="url"  class="form-control" id="url" placeholder="url">
     </div>
     <input type="hidden" formControlName="id" name="id" class="form-control" id="id">
     <button type="submit" class="btn btn-primary">Salvar</button>
@@ -25,7 +25,7 @@
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Title</th>
-        <th scope="col">Description</th>
+        <th scope="col">Url</th>
         <th scope="col">CreatedBy</th>
         <th scope="col">CreatedIn</th>
         <th scope="col">UpdatedBy</th>
@@ -37,7 +37,7 @@
       <tr *ngFor="let link of linkList">
         <th scope="row">{{link.id}}</th>
         <td>{{link.title}}</td>
-        <td>{{link.description}}</td>
+        <td>{{link.url}}</td>
         <td>{{link.createdBy.name}}</td>
         <td>{{link.createdIn}}</td>
         <td>{{link.updatedBy.name}}</td>
