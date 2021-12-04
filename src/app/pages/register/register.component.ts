@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     name: this.formBuilder.control(null, Validators.required),
     email: this.formBuilder.control(null, Validators.required),
     password: this.formBuilder.control(null, Validators.required),
-    dominio: this.formBuilder.control(null, Validators.required),
+    domain: this.formBuilder.control(null, Validators.required),
   });
 
   constructor(

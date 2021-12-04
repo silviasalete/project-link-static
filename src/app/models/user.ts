@@ -3,5 +3,5 @@ export interface User {
   name: string;
   email: string;
   password: string;
-  dominio: string;
+  domain: string;
 }

@@ -9,5 +9,5 @@ export const AuthLayoutRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'login/:email', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'link', component: LinkComponent },
+  { path: 'link/:domain', component: LinkComponent },
 ];
