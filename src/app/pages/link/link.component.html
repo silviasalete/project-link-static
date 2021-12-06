@@ -1,3 +1,12 @@
-<p>
-  link works!
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let link of links">
+      <td>{{link.url}}</td>
+    </tr>
+  </tbody>
+</table>

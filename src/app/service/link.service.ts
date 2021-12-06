@@ -10,12 +10,17 @@ import { Link, LinkPageable } from '../models/link';
 export class LinkService {
   constructor(private http: HttpClient) {}
 
-  list(id: number): Observable<Link[]> {
+  listByUserId(id: number): Observable<Link[]> {
     return this.http.get<Link[]>(
-      AppConstants.baseLinkFindAllById(id),
+      AppConstants.baseLinkFindAllByUserId(id),
       <Object>AppConstants.httpOptions
     );
   }
+
+  listByDomain(domain: string): Observable<Link[]> {
+    return this.http.get<Link[]>(AppConstants.baseLinkFindAllByDomain(domain));
+  }
+
   save(request: any): Observable<Link> {
     return this.http.post<Link>(
       AppConstants.baseLinkSave,

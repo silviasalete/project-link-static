@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { Token } from 'src/app/models/token.entities';
 import { User } from 'src/app/models/user';
+import { LinkService } from 'src/app/service/link.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private linkService: LinkService
   ) {}
 
   ngOnInit() {

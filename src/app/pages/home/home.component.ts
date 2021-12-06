@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   list(id: number) {
-    this.linkService.list(id).subscribe((data) => {
+    this.linkService.listByUserId(id).subscribe((data) => {
       this.linkList = data;
     });
   }

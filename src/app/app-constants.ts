@@ -58,8 +58,11 @@ export class AppConstants {
   public static baseLinkFindById(id: number): string {
     return this.baseLink + '/' + id;
   }
-  public static baseLinkFindAllById(id: number): string {
-    return this.baseLink + '/all/' + id;
+  public static baseLinkFindAllByUserId(id: number): string {
+    return this.baseLink + '/allByUserId/' + id;
+  }
+  public static baseLinkFindAllByDomain(domain: string): string {
+    return this.baseLink + '/allByDomain/' + domain;
   }
   public static baseLinkPageSort(
     page: number,
