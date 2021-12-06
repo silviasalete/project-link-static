@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { ExternalLayoutComponent } from './layouts/external-layout/external-layout.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
@@ -31,6 +32,19 @@ const routes: Routes = [
         loadChildren: () =>
           import('src/app/layouts/auth-layout/auth-layout.module').then(
             (m) => m.AuthLayoutModule
+          ),
+      },
+    ],
+  },
+  {
+    path: '',
+    component: ExternalLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('src/app/layouts/external-layout/external-layout.module').then(
+            (m) => m.ExternalLayoutModule
           ),
       },
     ],
