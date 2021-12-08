@@ -6,6 +6,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { ExternalLayoutComponent } from './layouts/external-layout/external-layout.component';
+import { LinkComponent } from './pages/link/link.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
@@ -37,8 +38,8 @@ const routes: Routes = [
     ],
   },
   {
-    path: '',
-    component: ExternalLayoutComponent,
+    path: ':domain',
+    component: LinkComponent,
     children: [
       {
         path: '',

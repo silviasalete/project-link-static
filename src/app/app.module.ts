@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './http-interceptors';
 import { ExternalLayoutComponent } from './layouts/external-layout/external-layout.component';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { ExternalLayoutComponent } from './layouts/external-layout/external-layo
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
+    ComponentsModule,
   ],
   declarations: [
     AppComponent,

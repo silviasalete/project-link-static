@@ -4,7 +4,7 @@
 </div>
   <button type="button" (click)="new()" class="btn btn-primary" >Novo</button>
   <button type="button" (click)="logout()" class="btn btn-primary" >Logout</button>
-  <a [routerLink]="['/link',user.domain]">Meu link</a>
+  <a [routerLink]="['/link',user.domain]" target="_blank">Meu link</a>
 <div *ngIf="visibleForm" class="card-body">
   <form [formGroup]="form" (ngSubmit)="saveOrUpdate()">
     <div class="form-group">

@@ -1,25 +1,18 @@
-<header>
-  <nav >
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link active" [routerLink]="['/']">Welcome</a>
-      </li>
-      <li class="nav-item">
-        <a [routerLink]="['login']" class="nav-link">Login</a>
-      </li>
-      <li class="nav-item">
-        <a [routerLink]="['register']" class="nav-link">Register</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-  </nav>
-</header>
-
-<section>
+<app-header></app-header>
+<app-hero></app-hero>
+<main>
+  <app-features></app-features>
+  <app-details></app-details>
+  <app-gallery></app-gallery>
+  <app-testimonials></app-testimonials>
+  <app-pricing></app-pricing>
+  <app-faq></app-faq>
+  <app-contact></app-contact>
+</main>
+<app-footer></app-footer>
+<!-- <section>
   <main class="container">
     <router-outlet></router-outlet>
   </main>
 </section>
-
+ -->

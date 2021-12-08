@@ -1,3 +1,4 @@
+import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -15,6 +16,10 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class RegisterComponent implements OnInit {
   private user: User = {} as User;
+  public message = {
+    visible: false,
+    text: '',
+  };
 
   form: FormGroup = this.formBuilder.group({
     name: this.formBuilder.control(null, Validators.required),
@@ -34,8 +39,13 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       this.userService.createAccount(this.form.value).subscribe((response) => {
-        this.form.reset();
-        this.router.navigate(['/login', response.email]);
+        if (response) {
+          this.router.navigate(['/login', response.email]);
+        } else {
+          let domain = this.form.controls['domain'].value;
+          this.message.visible = true;
+          this.message.text = `O dominio <strong>${domain}</strong> já existe!`;
+        }
       });
     }
   }

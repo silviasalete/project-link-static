@@ -36,6 +36,9 @@ export class AppConstants {
   public static get baseUserSave(): string {
     return this.baseUser + '/save';
   }
+  public static get baseUserHaveDomain(): string {
+    return this.baseUser + '/have-domain';
+  }
   public static baseUserFindById(id: number): string {
     return this.baseUser + '/' + id;
   }
