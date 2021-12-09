@@ -1,34 +1,31 @@
-<div class="container mt-3">
-  <div class="row mt-1">
-    <div class="col">
-      <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <strong>Exemplo de alerta</strong> o botão de fechar funciona.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    </div>
-  </div>
+<main id="main">
+    <!-- ======= Login Section ======= -->
+    <section id="login" class="login">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Login</h2>
+          <p>Não tem conta? Cadastre-se <a [routerLink]="['/register']">aqui</a></p>
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col-lg-4">
+            <form form role="form" [formGroup]="form" (ngSubmit)="onSubmit()" class="php-email-form" data-aos="fade-up">
+              <div class="form-group mt-3">
+                <input type="email" formControlName="email" class="form-control" id="email" placeholder="Seu Email" required>
+              </div>
+              <div class="form-group">
+                <input type="password" formControlName="password" class="form-control" id="password" placeholder="Sua Senha" required>
+              </div>
+              <div class="my-3" *ngIf="message.visible">
+                <div class="alert alert-primary" role="alert">
+                  A simple primary alert—check it out!
+                </div>
+              </div>
+              <div class="text-center"><button type="submit">Entrar</button></div>
+            </form>
+          </div>
 
-  <div class="row mt-5">
-    <div class="col">
-      <h2>Login</h2>
-      <form role="form" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="email">
-          <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" formControlName="password" class="form-control" id="password">
-        </div>
-        <div class="form-group">
-          Não tem cadastro? Clique
-          <a [routerLink]="['/register']">aqui</a>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-  </div>
-</div>
+
+      </div>
+    </section><!-- End Login Section -->
+</main>

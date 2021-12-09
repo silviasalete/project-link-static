@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AuthLayoutRoutes } from './auth-layout.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from 'src/app/pages/welcome/welcome.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   declarations: [WelcomeComponent, LoginComponent, RegisterComponent],
@@ -16,6 +17,7 @@ import { WelcomeComponent } from 'src/app/pages/welcome/welcome.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ComponentsModule,
   ],
   exports: [FormsModule, ReactiveFormsModule],
 })

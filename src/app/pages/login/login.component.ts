@@ -13,6 +13,10 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class LoginComponent implements OnInit {
   private user: User = {} as User;
+  public message = {
+    visible: false,
+    text: '',
+  };
 
   form: FormGroup = this.formBuilder.group({
     email: this.formBuilder.control(null, Validators.required),

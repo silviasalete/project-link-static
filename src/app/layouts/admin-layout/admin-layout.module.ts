@@ -5,15 +5,18 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { HttpClientModule } from '@angular/common/http';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ComponentsModule,
   ],
-  declarations: [HomeComponent],
+  exports: [FormsModule, ReactiveFormsModule],
 })
 export class AdminLayoutModule {}

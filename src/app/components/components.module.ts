@@ -10,6 +10,7 @@ import { PricingComponent } from './section/pricing/pricing.component';
 import { FaqComponent } from './section/faq/faq.component';
 import { ContactComponent } from './section/contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { FooterComponent } from './footer/footer.component';
     ContactComponent,
     FooterComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   exports: [
     HeaderComponent,
     HeroComponent,
