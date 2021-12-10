@@ -44,7 +44,11 @@ export class HomeComponent implements OnInit {
   }
 
   new() {
-    this.visibleForm = true;
+    if (!this.visibleForm) {
+      this.visibleForm = true;
+    } else {
+      this.visibleForm = false;
+    }
   }
 
   update(id: number) {

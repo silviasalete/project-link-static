@@ -11,49 +11,62 @@
         <a class="nav-link text-white active" href="#">Home <span class="sr-only">(current)</span></a>
         <a class="nav-link text-white" href="#">Features</a>
         <a class="nav-link text-white" href="#">Pricing</a>
-        <a class="nav-link text-white disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <button type="button" (click)="logout()" class="nav-link text-white btn btn-primary" >Logout</button>
       </div>
     </div>
   </nav>
-  <div class="row bg-f5365c pl-3 pt-3 pl-3 pb-5">
+  <div class="row bg-f5365c pl-3 pt-3 pb-5">
     <div class="col-6">
       <h5 class="text-white">Links</h5>
     </div>
     <div class="col-6 text-right">
-      <button class="btn btn-light btn-sm mr-2" type="button" (click)="new()" ><i class="bx bx-plus"></i></button>
-      <a class="btn btn-light btn-sm mr-2" [routerLink]="['/link',user.domain]" target="_blank"> <i class="bx bx-link"></i></a>
+      <a class="btn btn-light btn-sm mr-2" [routerLink]="['/',user.domain]" target="_blank"> <i class="bx bx-link"></i></a>
     </div>
   </div>
   <div class="card m-3">
     <div class=" card-header border-0">
       <div class="row">
         <div class="col-6">
-          <h6 class="mb-0"><strong>Striped table</strong></h6>
+          <h6 class="mb-0"><strong>Meus links</strong></h6>
         </div>
         <div class="col-6 text-right">
-          <a href="" class=" btn btn-sm btn-primary btn-round btn-icon">
-            <span class=" btn-inner--icon">
-              <i class="bx bx-link"></i>
-            </span>
-            <span class=" btn-inner--text"> Texto</span>
-          </a>
+          <button type="button" (click)="new()" class="btn btn-sm btn-primary" ><i class="bx bx-plus"></i> Novo</button>
         </div>
       </div>
+    </div>
+    <div *ngIf="visibleForm" class="card-body">
+      <form [formGroup]="form" (ngSubmit)="saveOrUpdate()">
+        <div class="form-group">
+          <label for="title">Título</label>
+          <input type="text" formControlName="title"  class="form-control" id="title" placeholder="title">
+        </div>
+        <div class="form-group">
+          <label for="url">Url</label>
+          <input type="text" formControlName="url"  class="form-control" id="url" placeholder="url">
+        </div>
+        <input type="hidden" formControlName="id" name="id" class="form-control" id="id">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </form>
     </div>
     <div class=" table-responsive">
       <table class=" table align-items-center table-flush table-striped">
         <thead class=" thead-light">
           <tr>
             <th scope="col">Fonte</th>
+            <th scope="col">#</th>
           </tr>
         </thead>
         <tbody>
-          <!-- <tr *ngFor="let link of linkList"> -->
-          <tr>
+          <tr *ngFor="let link of linkList">
             <td class=" table-user">
               <img class=" avatar-img rounded-circle mr-3" src="../../../assets/img/custom/profile.jpg" alt="Profile">
-              <b><a href="http://localhost:4200/#/">http://localhost:4200/#/</a></b>
-              <button type="button" class="btn btn-danger" >X</button>
+              <b><a href="{{link.url}}">{{link.url}}</a></b>
+            </td>
+            <td>
+              <div class="btn-group-vertical btn-group-sm" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-info" (click)="update(link.id)"><i class="bx bxs-edit"></i></button>
+                <button type="button" class="btn btn-danger" (click)="delete(link.id)"><i class="bx bx-trash"></i></button>
+              </div>
             </td>
           </tr>
         </tbody>
