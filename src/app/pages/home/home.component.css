@@ -6,3 +6,22 @@ img.avatar-img {
   width: 36px;
   height: 36px;
 }
+
+i.menu {
+  min-width: 2rem;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+.text-orange {
+  color: #fb6340 !important;
+}
+.text-pink {
+  color: #f3a4b5 !important;
+}
+.text-green {
+  color: #2dce89 !important;
+}
+.text-red {
+  color: #f5365c !important;
+}

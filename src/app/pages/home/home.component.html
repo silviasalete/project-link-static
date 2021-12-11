@@ -6,17 +6,17 @@
       <!-- <span class="navbar-toggler-icon"></span> -->
       <span class="menu text-white"><i class="bx bx-menu"></i></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link text-white" href="#">
-          <span><img class="avatar-img rounded-circle ml-3 mb-3" src="../../../assets/img/custom/profile.jpg" alt="Profile">{{user.name}}</span>
+    <div class="collapse navbar-collapse bg-light" id="navbarNavAltMarkup">
+      <div class="navbar-nav m-3">
+        <a class="nav-link" href="#">
+          <span><img class="avatar-img rounded-circle mb-3" src="../../../assets/img/custom/profile.jpg" alt="Profile">{{user.name}}</span>
         </a>
-        <a class="nav-link text-white active" href="#"> <i class="bx bx-home"></i> Meu Painel <span class="sr-only">(current)</span></a>
-        <a class="nav-link text-white" href="#"> <i class="bx bx-wrench"></i>Minha Conta</a>
-        <a class="nav-link text-white" href="#"><i class="bx bx-list-check"></i>Minhas Campanhas</a>
-        <a class="nav-link text-white" href="#"><i class="bx bx-money"></i> Meu Plano</a>
-        <a class="nav-link text-white" href="#"><i class="bx bx-help-circle"></i> Ajuda</a>
-        <a class="nav-link text-white" (click)="logout()"><i class="bx bx-log-in"></i>Sair</a>
+        <a class="nav-link justify-content-start active" href="#"> <i class="menu bx bx-home text-primary"></i>Painel <span class="sr-only">(current)</span></a>
+        <a class="nav-link justify-content-start  display-1" href="#"><i class="menu bx bx-wrench text-red "></i>Conta</a>
+        <a class="nav-link justify-content-start" href="#"><i class="menu bx bx-list-check text-info"></i>Campanhas</a>
+        <a class="nav-link justify-content-start" href="#"><i class="menu bx bx-money text-pink "></i>Plano</a>
+        <a class="nav-link justify-content-start " href="#"><i class="menu bx bx-help-circle"></i>Ajuda</a>
+        <a class="nav-link justify-content-start" (click)="logout()"><i class="menu bx bx-log-in text-orange"></i>Sair</a>
       </div>
     </div>
   </nav>
