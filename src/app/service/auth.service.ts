@@ -8,6 +8,28 @@ import jwtDecode from 'jwt-decode';
 export class AuthService {
   constructor(private router: Router) {}
 
+  getInfoToken(info: string): string {
+    const token = window.localStorage.getItem('token');
+    let decoded: any = null;
+    if (token) {
+      decoded = jwtDecode(token);
+    } else {
+      return 'Token não existe';
+    }
+    switch (info) {
+      case 'exp':
+        return decoded.exp;
+      case 'id':
+        return decoded.id;
+      case 'name':
+        return decoded.name;
+      case 'email':
+        return decoded.email;
+      default:
+        return `O parametro: ${info} não é um atributo do Token `;
+    }
+  }
+
   getAuthorizaionToken() {
     const token = window.localStorage.getItem('token');
 

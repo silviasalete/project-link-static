@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Link } from 'src/app/models/link';
+import jwtDecode from 'jwt-decode';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/service/auth.service';
 import { LinkService } from 'src/app/service/link.service';
@@ -32,8 +33,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.findUserById(+params['id']);
-      this.list(+params['id']);
+      let id: number;
+      if (params['id'] == undefined) {
+        id = +this.authService.getInfoToken('id');
+      } else {
+        id = +params['id'];
+      }
+      this.findUserById(id);
+      this.list(id);
     });
   }
 

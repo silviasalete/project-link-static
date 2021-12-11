@@ -1,28 +1,86 @@
 <main class="bg-light">
   <nav class="navbar navbar-expand-lg navbar-light pt-3 bg-f5365c">
-    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-    <img class="avatar-img rounded-circle ml-3 mb-3" src="../../../assets/img/custom/profile.jpg" alt="Profile">
+    <a class="navbar-brand"  [routerLink]="['/',user.domain]">Link</a>
+    <!-- <img class="avatar-img rounded-circle ml-3 mb-3" src="../../../assets/img/custom/profile.jpg" alt="Profile"> -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <!-- <span class="navbar-toggler-icon"></span> -->
       <span class="menu text-white"><i class="bx bx-menu"></i></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link text-white active" href="#">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-link text-white" href="#">Features</a>
-        <a class="nav-link text-white" href="#">Pricing</a>
-        <button type="button" (click)="logout()" class="nav-link text-white btn btn-primary" >Logout</button>
+        <a class="nav-link text-white" href="#">
+          <span><img class="avatar-img rounded-circle ml-3 mb-3" src="../../../assets/img/custom/profile.jpg" alt="Profile">{{user.name}}</span>
+        </a>
+        <a class="nav-link text-white active" href="#"> <i class="bx bx-home"></i> Meu Painel <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white" href="#"> <i class="bx bx-wrench"></i>Minha Conta</a>
+        <a class="nav-link text-white" href="#"><i class="bx bx-list-check"></i>Minhas Campanhas</a>
+        <a class="nav-link text-white" href="#"><i class="bx bx-money"></i> Meu Plano</a>
+        <a class="nav-link text-white" href="#"><i class="bx bx-help-circle"></i> Ajuda</a>
+        <a class="nav-link text-white" (click)="logout()"><i class="bx bx-log-in"></i>Sair</a>
       </div>
     </div>
   </nav>
-  <div class="row bg-f5365c pl-3 pt-3 pb-5">
+  <div class=" card bg-dark m-3">
+    <div class=" card-body">
+      <h3 class=" card-title text-white">Olá, {{user.name}}!</h3>
+      <blockquote class=" blockquote text-white mb-0">
+        <p> Este é o link da sua campanha principal. </p>
+        <footer class=" blockquote-footer text-danger">
+          http://link/dominio-test
+        </footer>
+      </blockquote>
+    </div>
+    <div class="card-footer text-white text-center">
+      <p>Verifique o seu link</p>
+      <div class=" text-white">
+        <button class=" btn btn-light btn-icon-only ml-1  rounded-circle">
+          <span class=" btn-inner--icon"><i class="bx bx-link-external"></i></span>
+        </button>
+        <button class=" btn btn-light btn-icon-only ml-1">
+          <span class=" btn-inner--icon"><i class="bx bx bxs-copy"></i></span>
+        </button>
+        <button class=" btn btn-light btn-icon-only ml-1">
+          <span class=" btn-inner--icon"><i class="bx bxl-whatsapp"></i></span>
+        </button>
+        <button class=" btn btn-light btn-icon-only ml-1">
+          <span class=" btn-inner--icon"><i class="bx bx-qr"></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class=" col-lg-4 ">
+    <div class=" card card-pricing bg-success border-0 text-center mb-4">
+      <div class=" card-header bg-transparent"><h4 class=" text-uppercase ls-1 text-white py-3 mb-0">Seu plano é free</h4> </div>
+      <div class=" card-body px-lg-7">
+        <div class=" display-6 text-white">R$ 0</div>
+        <span class=" text-white">por mês</span>
+        <ul class=" list-unstyled my-4">
+          <li>
+            <div class=" d-flex align-items-center">
+              <div>
+                <span class="h3 text-white"><i class="bx bx-check-circle"></i></span>
+              </div>
+              <div>
+                <span class=" pl-2 text-sm text-white"> Complete documentation </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <button class=" btn btn-primary mb-3"> Atualizar plano</button>
+      </div>
+      <div class=" card-footer bg-transparent">
+        <small class="text-white">*Válido por 1 ano</small>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row bg-f5365c pl-3 pt-3 pb-5">
     <div class="col-6">
-      <h5 class="text-white">Links</h5>
+      <h5 class="text-white"></h5>
     </div>
     <div class="col-6 text-right">
       <a class="btn btn-light btn-sm mr-2" [routerLink]="['/',user.domain]" target="_blank"> <i class="bx bx-link"></i></a>
     </div>
-  </div>
+  </div> -->
   <div class="card m-3">
     <div class=" card-header border-0">
       <div class="row">
