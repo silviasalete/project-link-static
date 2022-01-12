@@ -25,3 +25,7 @@ i.menu {
 .text-red {
   color: #f5365c !important;
 }
+
+.h3 {
+  font-size: 1.0625rem;
+}
